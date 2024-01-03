@@ -1,0 +1,103 @@
+----------------------------------------------------------------------
+---------------------------MergeSort----------------------------------
+----------------------------------------------------------------------
+public void mergeSort(int[] v, int vSize){
+    if(vSize < 2)
+        return;
+
+    int mid = vSize / 2;
+    int[] left = new int[mid];
+    int[] right = new int[vSize - mid];
+
+    System.arraycopy(v, 0, left, 0, mid);
+    System.arraycopy(v, mid, right, 0, vSize - mid);
+
+    mergeSort(left, mid);
+    mergeSort(right, vSize - mid);
+
+    merge(v, left, right);
+}
+
+private void merge(int[] v, int[] left, int[] right){
+    int iV = 0, iLeft = 0; iRight = 0;
+
+    while(iLeft < left.length && iRight < right.length)
+        if(left[iLeft] < right[iRight])
+            v[iV++] = left[iLeft++];
+        else
+            v[iV++] = right[iRight++];
+
+    while(iLeft < left.length)
+        v[iV++] = left[iLeft++];
+
+    while(iRight < right.length)
+        v[iV++] = right[iRight++];
+}
+
+
+----------------------------------------------------------------------
+-----------------------SelectionSort----------------------------------
+----------------------------------------------------------------------
+
+public void selectionSort(int[] v, int vSize){
+    for(int i = 0; i < vSize; i++)
+        swap(v, findMinPos(v, vSize), i);
+    
+}
+
+
+private int findMinPos(int[] v, int vSize){
+    int pos = 0, min = v[0]
+    for(int i = 1; i < vSize; i++)
+        if(v[i] < min){
+            pos = i;
+            min = v[i];
+        }
+    return pos;
+}
+
+private void swap(int[] v, int pos1, int pos2){
+    int temp = v[pos1];
+    v[pos1] = v[pos2];
+    v[pos2] = temp;
+}
+
+----------------------------------------------------------------------
+-----------------------InsertionSort----------------------------------
+----------------------------------------------------------------------
+public void InsertionSort(int[] v, int vSize){
+    for(int i = 0; i < vSize; i++){
+        int temp = v[i];
+
+        int j;
+        for(j = i; j > 0  && temp < v[j - 1]; j--)
+            v[j] = v[j - 1];
+        v[j] = temp;
+    }
+}
+
+----------------------------------------------------------------------
+------------------------BinarySearch----------------------------------
+----------------------------------------------------------------------
+
+public int BinarySearch(int[] v, int vSize; int value){
+    return binSearch(v, 0, vSize - 1, value);
+}
+
+public int binSearch(int[] v, int from, int to, int value){
+    if(from > to)
+        return -1;
+
+    int mid = (from + to) / 2;
+    int midValue = v[mid];
+
+    if(midValue == value)
+        return mid;
+
+    if(midValue > value)
+        return binSearch(v, from, mid - 1, value);
+
+    return binSearch(v, mid + 1, to, value);    
+}
+
+

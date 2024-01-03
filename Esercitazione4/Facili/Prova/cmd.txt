@@ -1,0 +1,9 @@
+comando1 | comando2	        l’output di comando1 viene utilizzato come input da comando2
+comando < file          	comando riceve il suo input da un file
+comando > file          	comando invia il suo output a file, sovrascrivendolo se esistente
+comando >> file	            analogo al precedente, ma il risultato di comando viene aggiunto alla fine del file, se esso esiste
+comando < file1 > file2	    ottiene l’input da file1 e manda l’output su file2
+comando < file1 >> file2	ottiene l’input da file1 ed aggiunge l’output a file2
+comando 2> file	            indirizza a file tutti gli eventuali errori (con >> aggiunge)
+comando > file 2>&1	        sia l’output che gli errori vengono inviati a file
+ 
