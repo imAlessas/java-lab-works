@@ -11,6 +11,8 @@ public class EtaBetaV2{
 		String sost= in.next().toLowerCase();
 		String agg= in.next().toLowerCase();
 
+		in.close();
+
 		art= art.substring(0,1).toUpperCase() + art.substring(1);
 
 		System.out.println(art+" p"+ver+" " +sost+" p"+agg+".");
